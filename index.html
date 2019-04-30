@@ -12,11 +12,11 @@
                     <form>
                         <div class="row">
                             <div class="col">
-                                <input type="number" id="minute1" class="form-control" placeholder="Minutes" /> 
+                                <input type="number" min=0 id="minute1" class="form-control" placeholder="Minutes" /> 
                             </div>
                             <span class="seperate">:</span>
                             <div class="col">
-                                <input type="number" id="seconds1" class="form-control" placeholder="Seconds"/>
+                                <input type="number" min=0 id="seconds1" class="form-control" placeholder="Seconds"/>
                             </div>
                         </div>
                     </form>
@@ -34,11 +34,11 @@
                     <form>
                         <div class="row">
                             <div class="col">
-                                <input type="number" id="minute2" class="form-control" placeholder="Minutes" /> 
+                                <input type="number" min=0 id="minute2" class="form-control" placeholder="Minutes" /> 
                             </div>
                             <span class="seperate">:</span>
                             <div class="col">
-                                <input type="number" id="seconds2" class="form-control" placeholder="Seconds"/>
+                                <input type="number" min=0 id="seconds2" class="form-control" placeholder="Seconds"/>
                             </div>
                         </div>
                     </form>
@@ -55,11 +55,11 @@
                     <form>
                         <div class="row">
                             <div class="col">
-                                <input type="number" id="minute3" class="form-control" placeholder="Minutes" /> 
+                                <input type="number" min=0 id="minute3"  class="form-control" placeholder="Minutes" /> 
                             </div>
                             <span class="seperate">:</span>
                             <div class="col">
-                                <input type="number" id="seconds3" class="form-control" placeholder="Seconds"/>
+                                <input type="number" min=0 id="seconds3" class="form-control" placeholder="Seconds"/>
                             </div>
                         </div>
                     </form>
@@ -76,11 +76,11 @@
                     <form>
                         <div class="row">
                             <div class="col">
-                                <input type="number" id="minute4" class="form-control" placeholder="Minutes" /> 
+                                <input type="number" id="minute4" min=0 class="form-control" placeholder="Minutes" /> 
                             </div>
                             <span class="seperate">:</span>
                             <div class="col">
-                                <input type="number" id="seconds4" class="form-control" placeholder="Seconds"/>
+                                <input type="number" id="seconds4" min=0 class="form-control" placeholder="Seconds"/>
                             </div>
                         </div>
                     </form>
@@ -91,8 +91,11 @@
             </div>
         </div>
     </body>
+    
 
     <script src="dependency/jquery-3.4.0.min.js"></script>
     <script src="javascript.js"></script>
+    <script src="classes.js"></script>
     <script src="dependency/bootstrap.bundle.min.js"></script>
+    <script>initAllButtons()</script>
 </html>
