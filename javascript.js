@@ -2,7 +2,12 @@ var timeouts = {};
 
 function countdown(element, minutes, seconds){
     var el = document.getElementById(element);
-    var start = ( (minutes * 60) + seconds  );
+    var intMinutes, intSeconds;
+
+    intMinutes = document.getElementById(minutes);
+    intSeconds = document.getElementById(seconds);
+
+    var start = ( (parseInt(intMinutes.value) * 60) + parseInt(intSeconds.value)  );
     var timeThen = new Date();
 
     function instance()
@@ -41,7 +46,7 @@ function start_onclick(index)
         return false;
     }
     isRunning[index-1] = true;
-    countdown('timer' + index, 0, 60);
+    countdown('timer' + index, 'minute'+ index, 'seconds' +index);
 
     return false; 
 }
@@ -61,31 +66,13 @@ start1.onclick = function(){
 
 start2.onclick = function() {
 
-    if (isRunning[1] == true){
-        return false;
-    }
-    isRunning[1] = true;
-    countdown('timer2', 0, 10);
-
-    return false;
+    start_onclick(2)
 }
 
 start3.onclick = function() {
-    if (isRunning[2] == true){
-        return false;
-    }
-    isRunning[2] = true;
-    countdown('timer3', 0, 15);
-
-    return false;
+    start_onclick(3)
 }
 
 start4.onclick = function() {
-    if (isRunning[3] == true){
-        return false;
-    }
-    isRunning[3] = true;
-    countdown('timer4', 0, 10);
-
-    return false;
+    start_onclick(4)
 }
