@@ -3,34 +3,47 @@ var timeouts = {};
 function countdown(element, minutes, seconds){
     var el = document.getElementById(element);
     var start = ( (minutes * 60) + seconds  );
+    var timeThen = new Date();
 
     function instance()
     {
-        var instanceTime = start--;
+        var elapsedTime = timeThen - new Date();
+        console.log(elapsedTime);
+        var instanceTime =  start + (Math.floor(elapsedTime/1000));
         
-        if(instanceTime <= 0){
+        if(instanceTime <= 0)
+        {
             el.innerHTML = "MATCH OVER!"
             return;
         }
-        else{
+        else
+        {
             if(instanceTime >= 60)
             {
                 el.innerHTML = Math.floor(instanceTime / 60) +":"+ (instanceTime - ((Math.floor(instanceTime / 60)) *60));
 
             }
-
             else
             {
                 el.innerHTML ="00:" + Math.floor(instanceTime);
             }
-            
         }
-        
-        
-        timeouts[element.id] = window.setTimeout(function() { instance(); }, 1000);
+        setTimeout(function() { instance(); }, 1000);
     }
-    timeouts[element.id] = window.setTimeout(function() { instance(); }, 1000);
+    setTimeout(function() { instance(); }, 1000);
 
+}
+
+
+function start_onclick(index)
+{
+    if (isRunning[index-1] == true){
+        return false;
+    }
+    isRunning[index-1] = true;
+    countdown('timer' + index, 0, 60);
+
+    return false; 
 }
 
 //Start as many timers as you want
@@ -42,16 +55,9 @@ var start4 = document.getElementById('start4');
 
 var isRunning = [false, false, false, false];
 
-start1.onclick = function() {
-
-    if (isRunning[0] == true){
-        return false;
-    }
-    isRunning[0] = true;
-    countdown('timer1', 1, 21);
-    
-    return false;
-}
+start1.onclick = function(){
+    start_onclick(1)
+};
 
 start2.onclick = function() {
 
