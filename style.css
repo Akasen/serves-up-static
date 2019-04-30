@@ -5,3 +5,7 @@
 .box-timer {
     font-family: 'Lato', sans-serif;
 }
+
+input[type='number']{
+    -moz-appearance: textfield;
+}
