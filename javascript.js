@@ -34,9 +34,11 @@ function countdown(element, totalTime){
 
 }
 
-reset()
+reset(element)
 {
-    
+    var el = document.getElementById(element);
+
+    el.innerHTML
 }
 
 var startButtonArray = [];
@@ -55,10 +57,7 @@ function start_onclick(index)
 
 function reset_onclick(index)
 {
-    if (startButtonArray[index-1].isRunning == true){
-        return false;
-    }
-    startButtonArray[index-1].isRunning = true;
+    resetButtonArray[index-1].isRunning = true;
     countdown('timer' + index, startButtonArray[index-1].TimeInSeconds);
 
     return false; 
