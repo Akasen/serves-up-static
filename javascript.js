@@ -1,5 +1,7 @@
 var timeouts = {};
 
+STOPTHEDAMNTHING = false;
+
 function countdown(element, totalTime){
     var el = document.getElementById(element);
 
@@ -11,7 +13,7 @@ function countdown(element, totalTime){
         console.log(elapsedTime);
         var instanceTime =  totalTime + (Math.floor(elapsedTime/1000));
         
-        if(instanceTime <= 0)
+        if(instanceTime <= 0 || STOPTHEDAMNTHING)
         {
             el.innerHTML = "MATCH OVER!"
             return;
@@ -33,52 +35,48 @@ function countdown(element, totalTime){
     setTimeout(function() { instance(); }, 1000);
 
 }
-
+/*
 reset(element)
 {
     var el = document.getElementById(element);
 
     el.innerHTML
-}
+}*/
 
 var startButtonArray = [];
 var resetButtonArray = [];
 
 function start_onclick(index)
 {
-    if (startButtonArray[index-1].isRunning == true){
-        return false;
-    }
-    startButtonArray[index-1].isRunning = true;
-    countdown('timer' + index, startButtonArray[index-1].TimeInSeconds);
+    Timers[x].countdown();
 
-    return false; 
 }
 
 function reset_onclick(index)
 {
     resetButtonArray[index-1].isRunning = true;
     countdown('timer' + index, startButtonArray[index-1].TimeInSeconds);
-
-    return false; 
 }
 
 //Start as many timers as you want
 
 function initStartButton(index)
 {
-    startButtonArray[index-1] = new startButton(document.getElementById('start'+index), 
-    document.getElementById('minute'+index),
-    document.getElementById('seconds'+index));
-    startButtonArray[index-1].element.onclick = function(){
+    startButtonArray[index-1] = Timers[index-1];
+    document.getElementById('minute'+index);
+    document.getElementById('seconds'+index);
+    ('start'+index).onclick = function(){
         start_onclick(index);
     }
 }
+
+var Timers = [];
 
 function initAllButtons()
 {
     for(x =1; elementExists('start'+(x)); x++)
     {
+        Timers[x-1] = new timer(x, document.getElementById('minute'+x), document.getElementById('seconds'+x) );
         initStartButton(x);
     }
 }
